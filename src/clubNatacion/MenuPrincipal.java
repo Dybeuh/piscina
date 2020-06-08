@@ -42,6 +42,8 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 	JMenu menuSocios = new JMenu("Socios");
 	JMenu menuMonitores = new JMenu("Monitores");
 	JMenu menuClases = new JMenu("Clases");
+	JMenu menuFacturas = new JMenu("Facturas");
+	JMenu menuPiscinas = new JMenu("Piscinas");
 	JMenu menuAyuda = new JMenu("Ayuda");
 	JMenu menuCerrar = new JMenu("Cerrar sesión");
 	JMenuItem miSociosAlta = new JMenuItem("Nuevo socio");
@@ -56,6 +58,14 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 	JMenuItem miClasesModificar = new JMenuItem("Modificar clase");
 	JMenuItem miClasesBaja = new JMenuItem("Eliminar clase");
 	JMenuItem miClasesConsulta = new JMenuItem("Consulta clase");
+	JMenuItem miFacturaAlta = new JMenuItem("Nueva factura");
+	JMenuItem miFacturaModificar = new JMenuItem("Modificar factura");
+	JMenuItem miFacturaBaja = new JMenuItem("Eliminar factura");
+	JMenuItem miFacturaConsulta = new JMenuItem("Consulta factura");
+	JMenuItem miPiscinaAlta = new JMenuItem("Nueva Piscina");
+	JMenuItem miPiscinaModificar = new JMenuItem("Modificar Piscina");
+	JMenuItem miPiscinaBaja = new JMenuItem("Eliminar Piscina");
+	JMenuItem miPiscinaConsulta = new JMenuItem("Consulta Piscina");
 	/* Componentes básicos */
 	// Etiquetas
 	JLabel lblTitulo = new JLabel("Club de Natación");
@@ -81,6 +91,7 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 	ResultSet rs = null;
 
 	MenuPrincipal(int tu) {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		usu = tu;
 		setTitle("Menú");
 		setLayout(new GridLayout(1, 1));
@@ -100,6 +111,8 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		menuSocios.add(miSociosAlta);
 		menuMonitores.add(miMonitoresAlta);
 		menuClases.add(miClasesAlta);
+		menuFacturas.add(miFacturaAlta);
+		menuPiscinas.add(miPiscinaAlta);
 		if (tu == 0) {
 			usu = tu;
 			menuSocios.add(miSociosModificar);
@@ -111,10 +124,18 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 			menuClases.add(miClasesModificar);
 			menuClases.add(miClasesBaja);
 			menuClases.add(miClasesConsulta);
+			menuFacturas.add(miFacturaModificar);
+			menuFacturas.add(miFacturaBaja);
+			menuFacturas.add(miFacturaConsulta);
+			menuPiscinas.add(miPiscinaModificar);
+			menuPiscinas.add(miPiscinaBaja);
+			menuPiscinas.add(miPiscinaConsulta);
 		}
 		barraMenu.add(menuSocios);
 		barraMenu.add(menuMonitores);
 		barraMenu.add(menuClases);
+		barraMenu.add(menuPiscinas);
+		barraMenu.add(menuFacturas);
 		barraMenu.add(menuAyuda);
 		barraMenu.add(menuCerrar);
 		setJMenuBar(barraMenu);
@@ -131,6 +152,14 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		miClasesModificar.addActionListener(this);
 		miClasesBaja.addActionListener(this);
 		miClasesConsulta.addActionListener(this);
+		miFacturaAlta.addActionListener(this);
+		miFacturaModificar.addActionListener(this);
+		miFacturaBaja.addActionListener(this);
+		miFacturaConsulta.addActionListener(this);
+		miPiscinaAlta.addActionListener(this);
+		miPiscinaBaja.addActionListener(this);
+		miPiscinaConsulta.addActionListener(this);
+		miPiscinaModificar.addActionListener(this);
 		menuAyuda.addMouseListener(this);
 		menuCerrar.addMouseListener(this);
 		setVisible(true);
@@ -190,6 +219,32 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		}
 		if (miClasesConsulta.equals(arg0.getSource())) {
 			new Clase().consultarClase(this, usu);
+		}
+// PISCINAS
+		if (miPiscinaAlta.equals(arg0.getSource())) {
+			new Piscina().nuevoPiscina(this, usu);
+		}
+		if (miPiscinaModificar.equals(arg0.getSource())) {
+			new Piscina().modificarPiscina(this, usu);
+		}
+		if (miPiscinaBaja.equals(arg0.getSource())) {
+			new Piscina().eliminarPiscina(this, usu);
+		}
+		if (miPiscinaConsulta.equals(arg0.getSource())) {
+			new Piscina().consultarPiscina(this, usu);
+		}
+// FACTURAS
+		if (miFacturaAlta.equals(arg0.getSource())) {
+			new Factura().nuevoFactura(this, usu);
+		}
+		if (miFacturaModificar.equals(arg0.getSource())) {
+			new Factura().modificarFactura(this, usu);
+		}
+		if (miFacturaBaja.equals(arg0.getSource())) {
+			new Factura().eliminarFactura(this, usu);
+		}
+		if (miFacturaConsulta.equals(arg0.getSource())) {
+			new Factura().consultarFactura(this, usu);
 		}
 	}
 

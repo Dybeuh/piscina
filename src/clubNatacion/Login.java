@@ -190,7 +190,7 @@ public class Login extends JFrame implements WindowListener, ActionListener, Mou
 		if (btnLgn.equals(arg0.getSource())) {
 			char[] passPers = txtPass.getPassword();
 			String pass = new String(passPers);
-			if (pass.equals("2020") && txtNom.getText().equals("Administrador")) {
+			if (pass.equals("2020") && txtNom.getText().equals("admin")) {
 				usu = 0;
 				try {
 					// Indicar el fichero donde se guarda ya creado o se crea solo si no existe (src
